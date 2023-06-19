@@ -73,10 +73,18 @@
     border-radius: 10px;
 }
 
+.task-info-inputs {
+    width: 100%;
+}
+
 .modal-inputs {
-    min-width: 300px;
-    padding: 3px;
-    outline:none;
+    display: block;
+    max-width: 300px;
+    width: calc(100% - 16px);
+    padding: 3px 8px;
+    outline: none;
+    border: none;
+    background-color: #eeeeee;
     border-radius: 8px;
     min-height: 30px;
     font-size: 15px;
@@ -84,28 +92,33 @@
 }
 
 .modal-sub-inputs-title, .modal-sub-inputs-time {
-    min-width: 10px;
-    padding: 3px;
-    outline:none;
+    display: inline-block;
+    max-width: 300px;
+    width: calc(40% - 16px);
+    padding: 3px 8px;
+    outline: none;
+    border: none;
+    min-width: 40px;
     border-radius: 8px;
     min-height: 20px;
     font-size: 12px;
+    background-color: #eeeeee;
 }
 
 .modal-sub-inputs-title {
-    margin: 0 10px 8px 0;
+    margin: 3px 10px 8px 0;
 }
 
 .modal-sub-inputs-time {
-    margin: 0 0 8px 10px;
+    margin: 3px 0 8px 10px;
 }
 
 .sub-task-label {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .sub-task-delete {
-    margin-left: 30px;
+    /*margin-left: 30px;*/
 }

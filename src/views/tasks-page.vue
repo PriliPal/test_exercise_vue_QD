@@ -8,7 +8,7 @@
     />
     <modal-edit-task
         v-model:visibility="modalVisibility.editTask"
-        :currentTask="tasks[idCurrentModal-1]"
+        :currentTask="findTaskById(idCurrentModal)"
         @editTask="editTask"
     />
     <modal-delete-task
@@ -16,6 +16,7 @@
         :taskId="idCurrentModal"
         @deleteTask="deleteTask"
     />
+
     <div @click="openAddModal" class="add-task cursor-pointer unselectable">
       Добавить задачу
     </div>
@@ -106,20 +107,15 @@ export default {
   },
 
   created() {
-    window.addEventListener('click',(event) => {
-      this.tasks.forEach((task) => {
-        if (document.getElementById(`taskOptions${task.id}`) === event.target ||
-            document.getElementById(`taskOptionsIcon${task.id}`) === event.target) {
-          return undefined
-        } else {
-          task.optionsOpened = false
-        }
-      })
-    })
+    window.addEventListener('click', this.popupListener, false)
     this.tasks.forEach((task) => {
       task.opened = false
       task.optionsOpened = false
     })
+  },
+
+  unmounted() {
+    window.removeEventListener('click', this.popupListener, false)
   },
 
   computed: {
@@ -128,7 +124,7 @@ export default {
     },
     nextId() {
       return this.$store.state.tasks.tasks.length + 1
-    }
+    },
   },
 
   methods: {
@@ -140,35 +136,50 @@ export default {
       checkTask: "tasks/checkTask",
     }),
 
+    popupListener(event) {
+      this.tasks.forEach((task) => {
+        if (document.getElementById(`taskOptions${task.id}`) === event.target ||
+            document.getElementById(`taskOptionsIcon${task.id}`) === event.target) {
+          return undefined
+        } else {
+          task.optionsOpened = false
+        }
+      })
+    },
+
     openAddModal() {
       this.modalVisibility.addTask = true
     },
 
     openEditModal(id) {
-      this.idCurrentModal = id
+      const task = this.findTaskById(id)
+      this.idCurrentModal = task.id
       this.modalVisibility.editTask = true
     },
 
     openDeleteModal(id) {
+      const task = this.findTaskById(id)
+      this.idCurrentModal = task.id
       this.modalVisibility.deleteTask = true
-      this.idCurrentModal = id
     },
 
     openTask(id) {
-      this.tasks.forEach((task) => {
-        if (task.id === id) {
-          task.opened = !task.opened
-        }
-      })
+      const task = this.findTaskById(id)
+      task.opened = !task.opened
     },
 
     openOptions(id) {
-      this.tasks.forEach((task) => {
-        if (task.id === id) {
-          task.optionsOpened = !task.optionsOpened
-        }
-      })
+      const task = this.findTaskById(id)
+      task.optionsOpened = !task.optionsOpened
     },
+
+    findTaskById(id) {
+      for (let i = 0; i < this.tasks.length; i++) {
+        if (this.tasks[i].id === id) {
+          return this.tasks[i]
+        }
+      }
+    }
 
   }
 }

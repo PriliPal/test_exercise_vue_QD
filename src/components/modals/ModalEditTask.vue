@@ -2,19 +2,10 @@
   <div v-show="visibility" class="modal-window" @click.stop="hideModal()">
     <div @click.stop class="modal-content">
 
-      <div>
-
-        <div>
-          <input class="modal-inputs" @keyup.enter="saveTask()" v-model="task.title" type="text" placeholder="Название">
-        </div>
-
-        <div>
-          <input class="modal-inputs" @keyup.enter="saveTask()" v-model="task.time" type="text" placeholder="Время">
-        </div>
-
-        <div>
-          <input class="modal-inputs" @keyup.enter="saveTask()" v-model="task.desc" type="text" placeholder="Описание">
-        </div>
+      <div class="task-info-inputs">
+        <input class="modal-inputs" @keyup.enter="saveTask()" v-model="task.title" type="text" placeholder="Название">
+        <input class="modal-inputs" @keyup.enter="saveTask()" v-model="task.time" type="text" placeholder="Время">
+        <input class="modal-inputs" @keyup.enter="saveTask()" v-model="task.desc" type="text" placeholder="Описание">
 
       </div>
 
@@ -22,22 +13,19 @@
 
         Добавить подзадачи
 
-<!--        {{task.subTasks}}-->
-
         <div v-for="(subTask, index) in subTasks" :key="`subTask${subTask.id}InNewTask${currentTask}`">
 
           <div class="sub-task-label">
             <div>
-              {{index + 1}}
+              <input class="modal-sub-inputs-title" v-model="subTasks[index].title" type="text" placeholder="Название">
+              <input class="modal-sub-inputs-time" v-model="subTasks[index].time" type="text" placeholder="Время">
             </div>
             <div @click="deleteSubTask(subTask.id)" class="sub-task-delete cursor-pointer">
               <i class="fa-regular fa-trash-can"></i>
             </div>
+
           </div>
-          <div>
-            <input class="modal-sub-inputs-title" v-model="subTasks[index].title" type="text" placeholder="Название">
-            <input class="modal-sub-inputs-time" v-model="subTasks[index].time" type="text" placeholder="Время">
-          </div>
+
         </div>
 
         <div v-if="task.subTasks !== undefined && subTasks.length < 5" class="add-subtask">
@@ -90,10 +78,8 @@ export default {
 
   watch: {
     visibility() {
-      // console.log(this.task ,this.currentTask)
       // eslint-disable-next-line no-undef
       this.task = _.cloneDeep(this.currentTask)
-
     },
     task: {
       handler() {
