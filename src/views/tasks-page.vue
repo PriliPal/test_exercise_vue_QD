@@ -28,19 +28,21 @@
     >
 
       <div class="task-main">
-        <div @click="openTask(task.id)" class="task-left cursor-pointer">
 
-          <span :class="task.done ? 'line-through' : ''">
-            {{ task.title }}
-          </span>
+        <div class="task-left">
+          <div @click="checkTask(task.id)" :class="task.done ? 'checked' : ''" class="task-check cursor-pointer">
+            <i class="fa-solid fa-check"></i>
+          </div>
 
-          <i class="task-open-icon fas fa-chevron-down"></i>
+          <span class="task-title" :class="task.done ? 'line-through' : ''">
+          {{ task.title }}
+        </span>
         </div>
 
         <div class="task-right">
 
-          <div @click="checkTask(task.id)" :class="task.done ? 'checked' : ''" class="task-check cursor-pointer">
-            <i class="fa-solid fa-check"></i>
+          <div @click="openTask(task.id)" class="open-task cursor-pointer">
+            <i class="task-open-icon fas fa-chevron-down"></i>
           </div>
 
           <div

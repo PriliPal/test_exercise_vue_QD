@@ -16,7 +16,7 @@
         <div v-for="(subTask, index) in subTasks" :key="`subTask${subTask.id}InNewTask${currentTask}`">
 
           <div class="sub-task-label">
-            <div>
+            <div class="modal-sub-inputs">
               <input class="modal-sub-inputs-title" v-model="subTasks[index].title" type="text" placeholder="Название">
               <input class="modal-sub-inputs-time" v-model="subTasks[index].time" type="text" placeholder="Время">
             </div>

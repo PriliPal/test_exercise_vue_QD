@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     z-index: 990;
+    text-align: start;
 }
 
 .modal-content {
@@ -71,6 +72,11 @@
     justify-content: center;
     background-color: rgb(208, 208, 208);
     border-radius: 10px;
+    transition: ease-out .2s;
+}
+
+.add-subtask-button:hover {
+    background-color: rgb(194, 194, 194);
 }
 
 .task-info-inputs {
@@ -91,10 +97,14 @@
     margin-bottom: 8px;
 }
 
+.modal-sub-inputs {
+    width: 267px;
+}
+
 .modal-sub-inputs-title, .modal-sub-inputs-time {
     display: inline-block;
     max-width: 300px;
-    width: calc(40% - 16px);
+    width: calc(40% - 8px);
     padding: 3px 8px;
     outline: none;
     border: none;
@@ -109,14 +119,14 @@
     margin: 3px 10px 8px 0;
 }
 
-.modal-sub-inputs-time {
-    margin: 3px 0 8px 10px;
-}
+/*.modal-sub-inputs-time {*/
+/*    margin: 3px 0 8px 10px;*/
+/*}*/
 
 .sub-task-label {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
 }
 
 .sub-task-delete {

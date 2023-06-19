@@ -24,17 +24,15 @@
 
         <div v-for="(subTask, index) in newTask.subTasks" :key="`subTask${subTask.id}InNewTask${newTaskId}`">
           <div class="sub-task-label">
-            <div>
-              {{index + 1}}
+            <div class="modal-sub-inputs">
+              <input class="modal-sub-inputs-title" v-model="newTask.subTasks[index].title" type="text" placeholder="Название">
+              <input class="modal-sub-inputs-time" v-model="newTask.subTasks[index].time" type="text" placeholder="Время">
             </div>
             <div @click="deleteSubTask(subTask.id)" class="sub-task-delete cursor-pointer">
               <i class="fa-regular fa-trash-can"></i>
             </div>
           </div>
-          <div>
-            <input class="modal-sub-inputs-title" v-model="newTask.subTasks[index].title" type="text" placeholder="Название">
-            <input class="modal-sub-inputs-time" v-model="newTask.subTasks[index].time" type="text" placeholder="Время">
-          </div>
+
         </div>
 
         <div v-if="newTask.subTasks !== undefined && newTask.subTasks.length < 5" class="add-subtask">
