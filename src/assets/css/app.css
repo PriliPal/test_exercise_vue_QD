@@ -1,0 +1,27 @@
+@import "modals.css";
+@import "others.css";
+@import "tasks.css";
+@import "sub-tasks.css";
+@import "header.css";
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1000px;
+    background-color: #d0d0d0;
+    min-height: calc(100vh - 84px);
+    padding: 20px 0;
+}

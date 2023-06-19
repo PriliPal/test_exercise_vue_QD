@@ -1,0 +1,18 @@
+.sub-task {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.sub-task-check {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 6px 7px;
+    border-radius: 50%;
+    transition: all ease-out .1s;
+}
+
+.sub-task-check:hover {
+    background-color: rgb(208, 208, 208);
+}

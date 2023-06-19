@@ -1,0 +1,13 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.unselectable {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
