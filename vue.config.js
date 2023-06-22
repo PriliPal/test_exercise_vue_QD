@@ -1,5 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  publicPath: "test_exercise_vue_QD",
+  publicPath: "https://prilipal.github.io/test_exercise_vue_QD/",
   transpileDependencies: true
 })
