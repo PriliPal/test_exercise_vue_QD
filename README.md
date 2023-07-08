@@ -1,5 +1,5 @@
-# test_exercise_vue_QD
-task-manager - test exercise for Quick Deal
+# vue task-manager
+a small app that allows you to manage your tasks and goals
 ## stack: 
   * vue.js
     * vuex
